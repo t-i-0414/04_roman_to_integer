@@ -1,5 +1,7 @@
 const romanToInt = (s: string): number => {
-  const Romans = {
+  const Romans: {
+    [index: string]: number;
+  } = {
     I: 1,
     IV: 4,
     V: 5,
@@ -20,8 +22,8 @@ const romanToInt = (s: string): number => {
   let result = 0;
 
   for (let i = 0; i < arr.length; i += 1) {
-    if (Romans[arr[i] + arr[i + 1]]) {
-      result = result + Romans[arr[i] + arr[i + 1]];
+    if (`${arr[i]}${arr[i + 1]}` in Romans) {
+      result = result + Romans[`${arr[i]}${arr[i + 1]}`];
       i += 1;
     } else {
       result = result + Romans[arr[i]];
